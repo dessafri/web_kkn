@@ -1,0 +1,64 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bglogin {
+  background-image: url("../assets/bg_login.jpg");
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+}
+
+.formTitle {
+  width: 100%;
+  height: 70px;
+  position: relative;
+  padding-top: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.formTitle span {
+  display: inline-block;
+  color: white;
+}
+
+.formTitle span:nth-child(1) {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.formTitle span:nth-child(2) {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.formLogin {
+  width: 100%;
+  height: 350px;
+  background-color: white;
+  position: relative;
+  margin-top: 70px;
+  border-radius: 30px;
+}
+
+.formLogin h1 {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  padding-top: 10px;
+  color: #0072bb;
+}
+
+.formLogin form {
+  width: 90%;
+  height: 250px;
+  margin: auto;
+  color: #0072bb;
+}
+/*# sourceMappingURL=style.css.map */

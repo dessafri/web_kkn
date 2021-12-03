@@ -1,0 +1,147 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+$color_primary: #0072bb;
+.bglogin {
+  background-image: url('../assets/bg.jpg');
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+}
+.formTitle {
+  width: 100%;
+  height: 70px;
+  position: relative;
+  padding-top: 20px;
+  box-sizing: border-box;
+  span {
+    display: inline-block;
+    color: white;
+    font-size: 22px;
+  }
+}
+.formKelas {
+  width: 100%;
+  position: relative;
+  margin-top: 30px;
+  .materi {
+    width: 100%;
+    height: 100px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    padding-top: 30px;
+    box-sizing: border-box;
+    h1 {
+      display: block;
+      font-weight: 700;
+      font-size: 26px;
+      margin-left: 40px;
+      color: white;
+    }
+  }
+  .detailMapel {
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    display: block;
+    padding-top: 30px;
+    box-sizing: border-box;
+    h1 {
+      display: block;
+      font-weight: 700;
+      font-size: 26px;
+      margin-left: 40px;
+      color: black;
+    }
+  }
+  .bacaanlMapel {
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+    display: block;
+    padding-top: 30px;
+    box-sizing: border-box;
+    text-align: justify;
+    padding: 3px;
+  }
+  .latihanMapel {
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    display: block;
+    padding-top: 30px;
+    box-sizing: border-box;
+    text-align: justify;
+    padding: 3px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    span {
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  .tugas {
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    background-color: white;
+    display: block;
+    hr {
+      width: 90%;
+      border: 1px solid rgba($color: #000000, $alpha: 0.2);
+      margin-left: 20px;
+      margin-bottom: 0px;
+    }
+    span {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 18px;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    span:nth-child(2) {
+      display: inline-block;
+      font-weight: 300;
+      font-size: 14px;
+    }
+  }
+}
+.navbar {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  bottom: 1%;
+  border-radius: 30px;
+  box-shadow: 6px 7px 13px 1px rgba(0, 0, 0, 0.56);
+  .navbar-nav {
+    width: 100%;
+    height: 50px;
+    .garis {
+      width: 1%;
+      height: 40px;
+      border: 1px solid rgba($color: #000000, $alpha: 0.7);
+      margin-top: -1%;
+    }
+    .nav-item {
+      a {
+        color: black;
+      }
+    }
+  }
+}

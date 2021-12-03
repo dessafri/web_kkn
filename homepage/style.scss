@@ -1,0 +1,57 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+$color_primary: #0072bb;
+.bglogin {
+  background-image: url('../assets/bg.jpg');
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+}
+.formTitle {
+  width: 100%;
+  height: 70px;
+  position: relative;
+  padding-top: 50px;
+  box-sizing: border-box;
+  span {
+    display: inline-block;
+    color: white;
+  }
+  span:nth-child(1) {
+    font-size: 24px;
+    font-weight: lighter;
+  }
+}
+.formKelas {
+  width: 100%;
+  height: 350px;
+  position: relative;
+  margin-top: 40px;
+
+  .kelas {
+    width: 50%;
+    height: 50px;
+    margin: auto;
+    top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    background-color: white;
+    border-radius: 100px;
+    border: 3px solid black;
+
+    a {
+      color: black;
+      margin: auto;
+      position: relative;
+      font-weight: bold;
+      left: 35%;
+      top: 20%;
+    }
+  }
+}
