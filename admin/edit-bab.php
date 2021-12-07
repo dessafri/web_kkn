@@ -13,6 +13,23 @@ $guru = query("SELECT * FROM guru WHERE id=$id");
 $idKelas = $guru[0]['id_kelas'];
 $materi = query("SELECT * FROM materi WHERE id_kelas=$idKelas");
 $kelas = query("SELECT * from kelas WHERE id=$idKelas");
+$idMateri = $_GET['id'];
+$detailmateri = query("SELECT * FROM detailmateri WHERE id=$idMateri");
+$idmaterikelas = $detailmateri[0]['id_materi'];
+$namaMateri = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT nama FROM materi WHERE id= $idmaterikelas")
+);
+
+if (isset($_POST['editbab'])) {
+    if (updatebab($_POST) > 0) {
+        echo "<script>
+        alert('Berhasil update Bab')
+        setTimeout(() => {
+            window.location.href='materi.php?id=$idmaterikelas'
+        }, 500);
+        </script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,9 +166,30 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard <?= $kelas[0][
-                  'nama_kelas'
+              <h1 class="h3 mb-0 text-gray-800">Edit Bab <?= $namaMateri[
+                  'nama'
               ] ?></h1>
+            </div>
+            <div class="content">
+                <form method="POST">
+                    <input type="hidden" name="id_bab" value="<?= $detailmateri[0][
+                        'id'
+                    ] ?> ">
+                    <div class="form-group">
+                        <label for="editorbacaan">Bacaan</label>
+                        <textarea class="form-control" id="editorbacaan" rows="3" name="bacaan" ><?= $detailmateri[0][
+                            'bacaan'
+                        ] ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editorlatihan">Latihan</label>
+                        <textarea class="form-control" id="editorlatihan" rows="3" name="latihan"><?= $detailmateri[0][
+                            'latihan'
+                        ] ?></textarea>
+                        <small>Kosongkan Jika Tidak Ada</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="editbab">Edit</button>
+                </form>
             </div>
           </div>
           <!-- /.container-fluid -->
@@ -178,7 +216,7 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
     </a>
 
     <!-- Logout Modal-->
-    <div
+    <!-- <div
       class="modal fade"
       id="logoutModal"
       tabindex="-1"
@@ -214,7 +252,7 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -225,12 +263,22 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create( document.querySelector( '#editorbacaan' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+        ClassicEditor.create( document.querySelector( '#editorlatihan' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+    </script>
   </body>
 </html>

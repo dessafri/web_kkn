@@ -8,10 +8,20 @@ if (isset($_POST['logout'])) {
     $_SESSION['id'] = '';
     header('location: index.php');
 }
+if (isset($_POST['tambahMateri'])) {
+    if (tambahMateri($_POST) > 0) {
+        echo "<script>
+        alert('Berhasil Tambah Materi')
+        setTimeout(() => {
+            window.location='guru.php';
+        }, 500);
+        </script>";
+    }
+}
 $id = $_SESSION['id'];
 $guru = query("SELECT * FROM guru WHERE id=$id");
 $idKelas = $guru[0]['id_kelas'];
-$materi = query("SELECT * FROM materi WHERE id_kelas=$idKelas");
+$materi = query("SELECT * FROM materi WHERE id=$idKelas");
 $kelas = query("SELECT * from kelas WHERE id=$idKelas");
 ?>
 <!DOCTYPE html>
@@ -149,10 +159,20 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard <?= $kelas[0][
+              <h1 class="h3 mb-0 text-gray-800">Tambah Materi <?= $kelas[0][
                   'nama_kelas'
               ] ?></h1>
             </div>
+            <div class="form">
+                  <form method="POST">
+                      <input type="hidden" name="id_kelas" value="<?= $idKelas ?>">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Nama Materi</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tematik / Bahasa Jawa ..." name="nama_materi">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="tambahMateri">Submit</button>
+                </form>
+              </div>
           </div>
           <!-- /.container-fluid -->
         </div>

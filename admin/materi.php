@@ -13,6 +13,11 @@ $guru = query("SELECT * FROM guru WHERE id=$id");
 $idKelas = $guru[0]['id_kelas'];
 $materi = query("SELECT * FROM materi WHERE id_kelas=$idKelas");
 $kelas = query("SELECT * from kelas WHERE id=$idKelas");
+$idMateri = $_GET['id'];
+$namaMateri = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT nama FROM materi WHERE id=$idMateri")
+);
+$detailmateri = query("SELECT * FROM detailmateri WHERE id_materi=$idMateri");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,9 +154,47 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard <?= $kelas[0][
-                  'nama_kelas'
+              <h1 class="h3 mb-0 text-gray-800">Daftar Materi <?= $namaMateri[
+                  'nama'
               ] ?></h1>
+            </div>
+            <div class="content">
+                <a href="tambah-bab.php?id=<?= $idMateri ?>" type="button" class="btn btn-primary">Tambah BAB</a><br><br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">BAB</th>
+                        <th scope="col">Bacaan</th>
+                        <th scope="col">Latihan</th>
+                        <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $index = 1; ?>
+                        <?php foreach ($detailmateri as $materi): ?>
+                        <tr>
+                        <th scope="row"><?= $index ?></th>
+                        <td width="40%" height="100px" style="
+                        overflow: hidden;
+                        text-overflow: ellipsis;">
+                            <?= $materi['bacaan'] ?>
+                        </td>
+                        <td width="40%"><?= $materi['latihan'] ?></td>
+                        <td>
+                            <a href="edit-bab.php?id=<?= $materi[
+                                'id'
+                            ] ?>" name="update" class="btn btn-primary">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a href="" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                        </tr>
+                        <?php $index++; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
           </div>
           <!-- /.container-fluid -->

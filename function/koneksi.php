@@ -67,6 +67,55 @@ function createGuru($data)
         return mysqli_affected_rows($conn);
     }
 }
+function tambahMateri($data)
+{
+    global $conn;
+
+    $nama = htmlspecialchars($data['nama_materi']);
+    $namalower = strtolower($nama);
+    $idkelas = htmlspecialchars($data['id_kelas']);
+    $materi = mysqli_query($conn, 'SELECT nama FROM materi');
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($materi)) {
+        $rows[] = $row;
+    }
+    $cekSama = '';
+    if (count($rows) > 0) {
+        foreach ($rows as $row) {
+            $strlow = strtolower($row['nama']);
+            if ($strlow === $namalower) {
+                $cekSama = 'sama';
+            }
+        }
+    }
+    if (strlen($cekSama) > 1) {
+        echo "<script>
+        alert('Materi Sudah Tersedia !!')
+        </script>";
+
+        return false;
+        $cekSama = '';
+    } else {
+        $query = "INSERT INTO materi VALUES('','$nama','$idkelas')";
+
+        mysqli_query($conn, $query);
+
+        return mysqli_affected_rows($conn);
+    }
+}
+function tambahbab($data)
+{
+    global $conn;
+
+    $bacaan = $data['bacaan'];
+    $latihan = $data['latihan'];
+    $idmateri = $data['id_materi'];
+    $query = "INSERT INTO detailmateri VALUES('','$bacaan','$latihan','$idmateri')";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
 
 function updateGuru($data)
 {
@@ -77,30 +126,19 @@ function updateGuru($data)
     $kelas = $data['kelas'];
 
     $query = "UPDATE guru SET id_kelas = $kelas WHERE id = $id";
-    // $id = $data['id'];
-    // $title = htmlspecialchars($data['title']);
-    // $location = htmlspecialchars($data['location']);
-    // $about = htmlspecialchars($data['about']);
-    // $keberangkatan = 'Requested';
-    // $duration = htmlspecialchars($data['duration']);
-    // $orang = htmlspecialchars($data['orang']);
-    // $destination = htmlspecialchars($data['destination']);
-    // $fasilitas = htmlspecialchars($data['fasilitas']);
-    // $harga = htmlspecialchars($data['harga']);
 
-    // $query = " UPDATE paket_travel SET
-    //                     title = '$title',
-    //                     location = '$location',
-    //                     about = '$about',
-    //                     keberangkatan = 'Requested',
-    //                     duration = '$duration',
-    //                     orang = '$orang',
-    //                     duration = '$duration',
-    //                     destination = '$destination',
-    //                     fasilitas = '$fasilitas',
-    //                     harga = '$harga'
-    //                     WHERE id='$id'
-    // ";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+function updatebab($data)
+{
+    global $conn;
+    $id = $data['id_bab'];
+    $bacaan = $data['bacaan'];
+    $latihan = $data['latihan'];
+
+    $query = "UPDATE detailmateri SET bacaan = '$bacaan',latihan = '$latihan' WHERE detailmateri.id = $id";
 
     mysqli_query($conn, $query);
 
