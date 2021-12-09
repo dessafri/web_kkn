@@ -15,49 +15,28 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500&family=Source+Sans+Pro&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css" />
 
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="bglogin"></div>
     <div class="container">
-      <div class="formTitle">
-        <div class="row">
-          <span class="col col-12">SILAHKAN PILIH KELAS</span>
-        </div>
+      <div class="imagetitle">
+        <img src="image/logo.gif" alt="logo lppm" />
+        <span class="text-center">
+          Lembaga Penelitian dan Pengabdian Masyarakat
+        </span>
+        <span class="text-center">Kelompok 41</span>
+        <span class="text-center">Universitas Trunojoyo Madura</span>
       </div>
-      <!-- <div class="formKelas">
-        <div class="kelas">
-          <img src="../assets/icon.png" alt="iconkelas" />
-        </div>
-      </div> -->
-      <div class="formKelas">
-        <div class="kelas">
-          <a href="../kelas/index.html" class="text-center">KELAS 1</a>
-        </div>
-        <div class="kelas">
-          <a href="" class="text-center">KELAS 2</a>
-        </div>
-        <div class="kelas">
-          <a href="" class="text-center">KELAS 3</a>
-        </div>
-        <div class="kelas">
-          <a href="" class="text-center">KELAS 4</a>
-        </div>
-        <div class="kelas">
-          <a href="" class="text-center">KELAS 5</a>
-        </div>
-        <div class="kelas">
-          <a href="" class="text-center">KELAS 6</a>
-        </div>
+      <div class="footer fixed-bottom">
+        <button type="button" class="btn rounded-circle">
+            <a href="home/index.php"><i class="fas fa-chevron-right"></i></a>
       </div>
+      </button>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
 

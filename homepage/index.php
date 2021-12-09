@@ -1,3 +1,14 @@
+<?php
+require '../function/koneksi.php';
+session_start();
+if ($_SESSION['id'] == '') {
+    header('location: ../home/index.php');
+}
+if (isset($_POST['logout'])) {
+    $_SESSION['id'] = '';
+    header('location: ../index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,44 +34,44 @@
     />
     <link rel="stylesheet" href="style.css" />
 
-    <title>Hello, world!</title>
+    <title>E Learning SDN Sidorejo</title>
   </head>
   <body>
     <div class="bglogin"></div>
     <div class="container">
       <div class="formTitle">
         <div class="row">
-          <span class="col col-12 text-center">E LEARNING</span>
-          <span class="col col-12 text-center">SDN 1 SIDOREJO</span>
+          <span class="col col-12">SILAHKAN PILIH KELAS</span>
         </div>
       </div>
-      <div class="formLogin">
-        <h1 class="text-center">LOGIN</h1>
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="@gmail.com"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              placeholder="********"
-            />
-          </div>
-          <div class="row">
-            <div class="col text-center">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </div>
+      <!-- <div class="formKelas">
+        <div class="kelas">
+          <img src="../assets/icon.png" alt="iconkelas" />
+        </div>
+      </div> -->
+      <div class="formKelas">
+        <div class="kelas">
+          <a href="../kelas/index.php?id=1" class="text-center" style="margin-left: -5px;">KELAS 1</a>
+        </div>
+        <div class="kelas">
+          <a href="../kelas/index.php?id=2" class="text-center" style="margin-left: -5px;">KELAS 2</a>
+        </div>
+        <div class="kelas">
+          <a href="../kelas/index.php?id=3" class="text-center" style="margin-left: -5px;">KELAS 3</a>
+        </div>
+        <div class="kelas">
+          <a href="../kelas/index.php?id=4" class="text-center" style="margin-left: -5px;">KELAS 4</a>
+        </div>
+        <div class="kelas">
+          <a href="../kelas/index.php?id=5" class="text-center" style="margin-left: -5px;">KELAS 5</a>
+        </div>
+        <div class="kelas">
+          <a href="../kelas/index.php?id=6" class="text-center" style="margin-left: -5px;">KELAS 6</a>
+        </div>
+      </div>
+      <div class="logout" style="position: relative; margin-top: 100px; display: flex; justify-content:end;">
+      <form action="" method="POST">
+        <button class="btn btn-danger" name="logout">Logout</button>
         </form>
       </div>
     </div>

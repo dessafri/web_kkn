@@ -1,3 +1,24 @@
+<?php
+require '../function/koneksi.php';
+session_start();
+if ($_SESSION['id'] == '') {
+    header('location: ../home/index.php');
+}
+
+$id = $_GET['id'];
+$id_kelas = $_GET['kelas'];
+$bab = query(
+    "SELECT * FROM detailmateri WHERE id_materi = $id AND id_kelas=$id_kelas"
+);
+$idmateri = $bab[0]['id_materi'];
+$idkelas = $bab[0]['id_kelas'];
+$namaMateri = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT * FROM materi WHERE id=$idmateri AND id_kelas=$idkelas"
+    )
+);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,7 +51,9 @@
     <div class="container">
       <div class="formTitle">
         <div class="row">
-          <span class="col col-12 text-center">Materi Kelas 1 Tematik</span>
+          <span class="col col-12 text-center">Materi Kelas <?= $bab[0][
+              'id_kelas'
+          ] ?> <?= $namaMateri['nama'] ?></span>
         </div>
       </div>
       <!-- <div class="formKelas">
@@ -39,9 +62,15 @@
         </div>
       </div> -->
       <div class="formKelas">
-        <div class="detailMapel">
-          <h1>BAB 1</h1>
+        <?php $index = 1; ?>
+        <?php foreach ($bab as $bab): ?>
+        <div class="detailMapel" style="margin-bottom: 10px;">
+          <a href="detailMapel.php?id=<?= $bab['id'] ?>&materi=<?= $bab[
+    'id_materi'
+] ?>&kelas=<?= $bab['id_kelas'] ?>"><h1>BAB <?= $index ?></h1></a>
         </div>
+        <?php $index++; ?>
+        <?php endforeach; ?>
       </div>
       <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="navbar-nav">
@@ -50,11 +79,7 @@
             style="display: flex; justify-content: space-evenly;"
           >
             <div class="nav-item">
-              <a href=""><i class="fas fa-home fa-2x"></i></a>
-            </div>
-            <div class="garis"></div>
-            <div class="nav-item">
-              <a href=""><i class="fas fa-book fa-2x"></i></a>
+              <a href="javascript:history.go(-1)"><i class="fas fa-arrow-left fa-2x"></i></a>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ $id = $_SESSION['id'];
 $guru = query("SELECT * FROM guru WHERE id=$id");
 $idKelas = $guru[0]['id_kelas'];
 $materi = query("SELECT * FROM materi WHERE id_kelas=$idKelas");
+$detailmateri = query("SELECT * FROM materi WHERE id_kelas=$idKelas");
 $kelas = query("SELECT * from kelas WHERE id=$idKelas");
 ?>
 <!DOCTYPE html>
@@ -147,12 +148,48 @@ $kelas = query("SELECT * from kelas WHERE id=$idKelas");
           <div class="container-fluid">
             <!-- Page Heading -->
             <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard <?= $kelas[0][
+              class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Daftar Materi <?= $kelas[0][
                   'nama_kelas'
-              ] ?></h1>
+              ] ?>
+              </h1>
             </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Materi</th>
+                  <th scope="col">Banyak Bab</th>
+                  <th scope="col">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $index = 1; ?>
+                <?php foreach ($detailmateri as $detailmateri): ?>
+                  <?php
+                  $id = $detailmateri['id'];
+                  $query = "SELECT COUNT(*) as 'total' FROM detailmateri WHERE id_materi=$id";
+
+                  $result = mysqli_query($conn, $query);
+                  $data = mysqli_fetch_assoc($result);
+                  ?>
+                <tr>
+                  <th scope="row"><?= $index ?></th>
+                  <td><?= $detailmateri['nama'] ?></td>
+                  <td><?= $data['total'] ?></td>
+                  <td>
+                    <a href="materi.php?id=<?= $id ?>" name="update" class="btn btn-primary">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="delete-materi.php?delete=<?= $id ?>"" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                  </td>
+                </tr>
+                <?php $index++; ?>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
           </div>
           <!-- /.container-fluid -->
         </div>

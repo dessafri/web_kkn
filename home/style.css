@@ -40,11 +40,12 @@ html {
 
 .formLogin {
   width: 100%;
-  height: 350px;
-  background-color: white;
+  height: 450px;
+  background-color: blue;
   position: relative;
   margin-top: 70px;
   border-radius: 30px;
+  display: none;
 }
 
 .formLogin h1 {

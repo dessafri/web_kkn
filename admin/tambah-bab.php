@@ -171,6 +171,7 @@ if (isset($_POST['tambahBab'])) {
             <div class="content">
                 <form method="POST">
                     <input type="hidden" name="id_materi" value="<?= $idMateri ?> ">
+                    <input type="hidden" name="id_kelas" value="<?= $idKelas ?> ">
                     <div class="form-group">
                         <label for="editorbacaan">Bacaan</label>
                         <textarea class="form-control" id="editorbacaan" rows="3" name="bacaan"></textarea>

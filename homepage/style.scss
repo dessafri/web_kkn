@@ -47,10 +47,11 @@ $color_primary: #0072bb;
 
     a {
       color: black;
-      margin: auto;
+      // margin: auto;
+      margin-left: -10px;
       position: relative;
       font-weight: bold;
-      left: 35%;
+      left: 30%;
       top: 20%;
     }
   }

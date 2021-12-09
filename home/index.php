@@ -1,3 +1,11 @@
+<?php
+require '../function/koneksi.php';
+session_start();
+
+if (isset($_POST['login'])) {
+    loginSiswa($_POST);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,28 +23,61 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500&family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
     <title>Hello, world!</title>
   </head>
   <body>
+    <div class="bglogin"></div>
     <div class="container">
-      <div class="imagetitle">
-        <img src="image/logo.gif" alt="logo lppm" />
-        <span class="text-center">
-          Lembaga Penelitian dan Pengabdian Masyarakat
-        </span>
-        <span class="text-center">Kelompok 41</span>
-        <span class="text-center">Universitas Trunojoyo Madura</span>
+      <div class="formTitle">
+        <div class="row">
+          <span class="col col-12 text-center">E LEARNING</span>
+          <span class="col col-12 text-center">SDN 1 SIDOREJO</span>
+        </div>
       </div>
-      <div class="footer fixed-bottom">
-        <button type="button" class="btn rounded-circle">
-            <a href="home/index.html"><i class="fas fa-chevron-right"></i></a>
+      <div class="formLogin">
+        <h1 class="text-center">LOGIN</h1>
+        <form method="POST" action="">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="@gmail.com"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="********"
+              name="password"
+            />
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary" name="login">Login</button>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col text-center">
+              <a href="register.php" type="submit">Buat Akun</a>
+            </div>
+          </div>
+        </form>
       </div>
-      </button>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
 

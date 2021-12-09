@@ -54,10 +54,10 @@ html {
 
 .formKelas .kelas a {
   color: black;
-  margin: auto;
+  margin-left: -10px;
   position: relative;
   font-weight: bold;
-  left: 35%;
+  left: 30%;
   top: 20%;
 }
 /*# sourceMappingURL=style.css.map */

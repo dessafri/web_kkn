@@ -1,3 +1,20 @@
+<?php
+require '../function/koneksi.php';
+session_start();
+
+if (isset($_POST['register'])) {
+    if (createSiswa($_POST) > 0) {
+        echo "<script>
+        alert('Register Berhasil! Silahkan Login')
+        setTimeout(() => {
+            window.location='index.php';
+        }, 500);
+        </script>";
+    } else {
+        echo mysqli_error($conn);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,93 +40,64 @@
     />
     <link rel="stylesheet" href="style.css" />
 
-    <title>E Learning SDN 1 SIDOREJO</title>
+    <title>Hello, world!</title>
   </head>
   <body>
     <div class="bglogin"></div>
     <div class="container">
       <div class="formTitle">
         <div class="row">
-          <span class="col col-12 text-center">Materi Kelas 1</span>
+          <span class="col col-12 text-center">E LEARNING</span>
+          <span class="col col-12 text-center">SDN 1 SIDOREJO</span>
         </div>
       </div>
-      <!-- <div class="formKelas">
-        <div class="kelas">
-          <img src="../assets/icon.png" alt="iconkelas" />
-        </div>
-      </div> -->
-      <div class="formKelas">
-        <div
-          class="materi"
-          style="
-            background-image: url('../assets/bg_mapel1.jpg');
-            background-size: cover;
-          "
-        >
-          <h1>TEMATIK</h1>
-        </div>
-        <div
-          class="materi"
-          style="
-            background-image: url('../assets/bg_mapel4.jpg');
-            background-size: cover;
-          "
-        >
-          <h1>TEMATIK</h1>
-        </div>
-        <div
-          class="materi"
-          style="
-            background-image: url('../assets/bg_mapel3.jpg');
-            background-size: cover;
-          "
-        >
-          <h1>TEMATIK</h1>
-        </div>
-        <div
-          class="materi"
-          style="
-            background-image: url('../assets/bg_mapel1.jpg');
-            background-size: cover;
-          "
-        >
-          <h1>TEMATIK</h1>
-        </div>
-        <div
-          class="materi"
-          style="
-            background-image: url('../assets/bg_mapel4.jpg');
-            background-size: cover;
-          "
-        >
-          <h1>TEMATIK</h1>
-        </div>
-        <div
-          class="materi"
-          style="
-            background-image: url('../assets/bg_mapel3.jpg');
-            background-size: cover;
-          "
-        >
-          <h1>TEMATIK</h1>
-        </div>
-      </div>
-      <nav class="navbar fixed-bottom navbar-light bg-light">
-        <div class="navbar-nav">
-          <div
-            class="row"
-            style="display: flex; justify-content: space-evenly;"
-          >
-            <div class="nav-item">
-              <a href=""><i class="fas fa-home fa-2x"></i></a>
-            </div>
-            <div class="garis"></div>
-            <div class="nav-item">
-              <a href=""><i class="fas fa-book fa-2x"></i></a>
+      <div class="formLogin" style="height: 400px;">
+        <h1 class="text-center">REGISTER</h1>
+        <form method="POST" action="">
+          <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nama"
+              aria-describedby="emailHelp"
+              placeholder="Nama Lengkap"
+              name="nama"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="@gmail.com"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="********"
+              name="password"
+            />
+          </div>
+          <div class="row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary" name="register">Buat Akun</button>
             </div>
           </div>
-        </div>
-      </nav>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col text-center">
+              <a href="index.php" type="submit">Login</a>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
